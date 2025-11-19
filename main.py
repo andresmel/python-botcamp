@@ -9,8 +9,7 @@ from pydantic import BaseModel
 from ultralytics import YOLO
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import URL
-from sqlalchemy import create_engine
-
+import os
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="API YOLO + Supabase - Bootcamp")
@@ -26,13 +25,10 @@ app.add_middleware(
 # ==========================================================
 # 1. CONEXIÓN A SUPABASE (POSTGRES - SESSION POOLER)
 # ==========================================================
-DATABASE_URL = (
-    "postgresql+psycopg2://"
-    "postgres.rshyneunbtvwyqrfbpcj:admin89101154743"
-    "@aws-0-us-west-2.pooler.supabase.com:5432/postgres"
-    "?sslmode=require"
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
+if not DATABASE_URL:
+    raise Exception("DATABASE_URL no está configurada")
 engine = create_engine(DATABASE_URL)
 
 # ==========================================================
