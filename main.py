@@ -8,7 +8,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from ultralytics import YOLO
 from sqlalchemy import create_engine, text
-from sqlalchemy.engine import URL
 import os
 from fastapi.middleware.cors import CORSMiddleware
 
