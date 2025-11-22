@@ -221,7 +221,7 @@ def guardar_imagen_en_bd(img_base64: str, description: str) -> bool:
                 INSERT INTO imagenes (imagen, descroption)
                 VALUES (:img, :desc)
             """)
-            result = conn.execute(query, {"img": img_base64, "desc": descroption})
+            result = conn.execute(query, {"img": img_base64, "desc": description})
             if result.rowcount != 1:
                 print("Error al guardar en BD: No se insertó ninguna fila")
                 return False
