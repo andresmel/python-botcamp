@@ -26,6 +26,7 @@ app.add_middleware(
 # ==========================================================
 # 1. CONEXIÓN A SUPABASE (POSTGRES - SESSION POOLER)
 # ==========================================================
+# DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if not DATABASE_URL:
